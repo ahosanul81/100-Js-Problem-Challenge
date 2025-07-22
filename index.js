@@ -396,4 +396,83 @@ const defangIPaddr = (address) => {
   return splittedAddress.join("");
 };
 const result16 = defangIPaddr("1.1.1.1");
-console.log(result16);
+// console.log(result16);
+
+/*******problem - 17 *************
+ *
+ *Create a function that takes two numbers as arguments and returns their sum.
+ *addition(3, 2) - 5
+ *Bitwise Operations
+ *bitwiseAND(6, 23) 00000110 -> bitwiseAND (6, 23) -6
+ *bitwiseOR(6, 23) 00010111 -> bitwiseOR (6, 23) 23
+ *bitwiseXOR (6, 23)00010001 -> bitwiseXOR(6, 23) - 17
+ */
+
+const bitWiseAnd = (num1, num2) => num1 & num2;
+const bitWiseOr = (num1, num2) => num1 | num2;
+const bitWiseXor = (num1, num2) => num1 ^ num2;
+
+// console.log(bitWiseAnd(6, 23));
+// console.log(bitWiseOr(6, 23));
+// console.log(bitWiseXor(6, 23));
+
+/********problem - 18***************
+ * //Add up the Numbers from a Single Number
+/*Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function. For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10 
+ */
+
+const addNumbersUpto = (num) => {
+  let sum = 0;
+  for (let i = 1; i <= num; i++) {
+    sum += i;
+  }
+  return sum;
+};
+const result18 = addNumbersUpto(4);
+// console.log(result18);
+
+/**********problem - 19 *************
+ * left shift by power of two
+ * shiftToLeft(5,2) // 20
+ */
+
+const shiftToLeft = (n1, n2) => n1 << n2;
+// console.log(shiftToLeft(5, 2));
+
+/**********problem - 20 ************
+ * find the smallest and biggest number
+ * [1,2,3,4,5] // output : [1,5]
+ */
+
+const findMinMax = (nums) => {
+  let minMaxArr = [nums[0], nums[1]];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < minMaxArr[0]) {
+      minMaxArr[0] = nums[i];
+    }
+    if (nums[i] > minMaxArr[1]) {
+      minMaxArr[1] = nums[i];
+    }
+  }
+  return minMaxArr;
+};
+
+const findMinMaxWay2 = (nums) => {
+  if (!Array.isArray(nums) || nums.length === 0) {
+    return null; // handle empty array
+  }
+
+  const min = Math.min(...nums);
+  const max = Math.max(...nums);
+
+  return [min, max];
+};
+// const result20 = findMinMax([1, 2, 3, 4, 5]);
+const result20 = findMinMax([5, 1, 3, 4]);
+const result20Way2 = findMinMaxWay2([5, 1, 3, 4]);
+// console.log(result20Way2);
+// console.log(result20);
+
+/**********problem - 21 ************
+ *
+ */
