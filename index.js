@@ -474,5 +474,146 @@ const result20Way2 = findMinMaxWay2([5, 1, 3, 4]);
 // console.log(result20);
 
 /**********problem - 21 ************
- *
+ * 5 decemal to binary // 101
+ * 5 decimal to octal // 12
  */
+
+const numberSystemConvert = (number) => console.log(number.toString(2));
+
+// numberSystemConvert(5);
+
+/**********problem - 22 ************
+ * create a function to return the amount of potatoes there are in a string.
+ */
+
+const findRepeatStr = (str) => {
+  const splittedStr = str.split("potato");
+  const result = splittedStr.length - 1;
+  return result;
+};
+const result22 = findRepeatStr("potatoespotato");
+// console.log(result22);
+
+/**********problem - 23 ************
+ * take two input in a fn
+ * a+ b = 10 or a = 10 or b = 10
+ */
+
+const checkNumber = (a, b) => {
+  if (a + b === 10 || a === 10 || b === 10) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+// another way
+const checkNumberAnotherWay = (a, b) => [a, b, a + b].includes(10);
+// console.log(checkNumberAnotherWay(5, 12));
+
+const result23 = checkNumber(5, 10);
+// console.log(result23);
+
+/**********problem - 24 ************
+ *Create a function that takes a number x and a character y (“m” for male, "f" for female), and returns the name of an ancestor (m/f) or descendant (m/f).
+If the number 15 negative, return the related ancestor. If positive, return the related descendant.
+You are generation 0. In the case of 0 (male or female), return "mel".
+Examples
+generation(2, "f") - "granddaughter"
+generation(-3, "m") "great grandfather"
+generation(1, "f")
+-
+"daughter"
+Notes
+Generation
+Male
+Female
+-3 great grandfather great grandmother
+-2 grandfather grandmother
+-1 father mother
+ */
+
+const findGeneration = (x, y) => {
+  const genObj = {
+    "-3": { m: "great-grandfather", f: "great-grandmother" },
+    "-2": { m: "grand-father", f: "grand-mother" },
+    "-1": { m: "father", f: "mother" },
+    0: { m: "me", f: "me" },
+    1: { m: "son", f: "daughter" },
+    2: { m: "grand-son", f: "garnd-daughter" },
+    3: { m: "great-grand-son", f: "great-garnd-daughter" },
+  };
+
+  return genObj[x][y];
+};
+// another way
+
+const findGenerationAnotherWay = (x, y) => {
+  const genArray = [
+    { "-3": { m: "great-grandfather", f: "great-grandmother" } },
+    { "-2": { m: "grand-father", f: "grand-mother" } },
+    { "-1": { m: "father", f: "mother" } },
+    { 0: { m: "me", f: "me" } },
+    { 1: { m: "son", f: "daughter" } },
+    { 2: { m: "grand-son", f: "garnd-daughter" } },
+    { 3: { m: "great-grand-son", f: "great-garnd-daughter" } },
+  ];
+
+  const result = genArray.find((genObj) => genObj[x] !== undefined);
+  return result[x][y];
+};
+// console.log(findGenerationAnotherWay(3, "f"));
+
+const result24 = findGeneration(3, "f");
+// console.log(result24);
+
+/**********problem - 25 ***********
+ * // create a function that converts an object into an array, where each element represents a key-value pair in the form of an array.
+//toArray({a: 1, b: 2}) → [["a", 1], ["b", 2]]
+ * 
+*/
+
+const convertObjToArray = (obj) => {
+  let arr = [];
+  for (const [key, value] of Object.entries(obj)) {
+    arr.push([key, value]);
+  }
+  return arr;
+};
+
+const result25 = convertObjToArray({ a: 1, b: 2 });
+// console.log(result25);
+
+/*********problem 26 ************
+ * Create a function that takes a number (step) as an argument and returns the amount of boxes in that step of the sequence.
+Step 0: Start with 0
+Step 1: Add 3
+Step 2: Subtract 1
+Repeat Step 1 & 2
+***
+Step (the input) is always a positive integer (or zero).
+For an odd step add 3, for an even step subtract 1.
+ */
+
+const countStep = (step) => {
+  let boxes = 0;
+  for (i = 0; i <= step; i++) {
+    if (i === 0) continue;
+    if (i % 2 === 0) {
+      boxes -= 1;
+    } else {
+      boxes += 3;
+    }
+  }
+  return boxes;
+};
+const result26 = countStep(3);
+// console.log(result26);
+
+/*************problem- 27**************
+ * clone an array
+ * arr([1,1]) // [1,1, [1,1]]
+ *  */
+const cloneArray = (arr) => [...arr, arr];
+const result27 = cloneArray([1, 1]);
+// console.log(result27);
