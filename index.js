@@ -1,4 +1,4 @@
-// gap - 6, 12
+// gap - 6, 12, 28
 /** ************Problem- 1***********************
  *Write a function that returns the sum of two numbers.
  *Write a function that returns the sum of all numbers regardless of # of params.
@@ -617,3 +617,98 @@ const result26 = countStep(3);
 const cloneArray = (arr) => [...arr, arr];
 const result27 = cloneArray([1, 1]);
 // console.log(result27);
+
+/************problem - 28 ******************
+ *
+ */
+
+/************problem - 29 ******************
+ * 1678. Goal Parser Interpretation
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+You own a Goal Parser that can interpret a string command. The command consists of an alphabet of "G", "()" and/or "(al)" in some order. The Goal Parser will interpret "G" as the string "G", "()" as the string "o", and "(al)" as the string "al". The interpreted strings are then concatenated in the original order.
+
+Given the string command, return the Goal Parser's interpretation of command.
+
+ 
+
+Example 1:
+
+Input: command = "G()(al)"
+Output: "Goal"
+Explanation: The Goal Parser interprets the command as follows:
+G -> G
+() -> o
+(al) -> al
+The final concatenated result is "Goal".
+ */
+
+const interpret = (command) => {
+  let goal = [];
+  const splittedCommand = command.split("");
+
+  for (let i = 0; i < splittedCommand.length; i++) {
+    if (splittedCommand[i] === "G") {
+      goal[i] = "G";
+    }
+    if (splittedCommand[i] === "(" && splittedCommand[i + 1] === ")") {
+      goal[i] = "o";
+    }
+    if (
+      splittedCommand[i] === "(" &&
+      splittedCommand[i + 1] === "a" &&
+      splittedCommand[i + 2] === "l" &&
+      splittedCommand[i + 3] === ")"
+    ) {
+      goal[i] = "al";
+    }
+  }
+  return goal.join("");
+};
+const result29 = interpret("(al)G(al)()()G");
+// console.log(result29);
+
+/***********problem - 30 *********
+ * 867. Transpose Matrix
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+Given a 2D integer array matrix, return the transpose of matrix.
+
+The transpose of a matrix is the matrix flipped over its main diagonal, switching the matrix's row and column indices.
+
+Example 1:
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [[1,4,7],[2,5,8],[3,6,9]]
+Example 2:
+
+Input: matrix = [[1,2,3],[4,5,6]]
+Output: [[1,4],[2,5],[3,6]]
+ 
+ */
+
+const transpose = (matrix) => {
+  const arr1 = Array.from({ length: matrix[0].length }, () =>
+    new Array(matrix.length).fill(0)
+  );
+
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix[0].length; col++) {
+      arr1[col][row] = matrix[row][col];
+    }
+  }
+
+  return arr1;
+};
+const result30 = transpose([
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+]);
+// console.log(result30);
