@@ -1,4 +1,4 @@
-// gap - 6, 12, 28
+// gap - 6, 12, 28, 34
 /** ************Problem- 1***********************
  *Write a function that returns the sum of two numbers.
  *Write a function that returns the sum of all numbers regardless of # of params.
@@ -712,3 +712,271 @@ const result30 = transpose([
   [7, 8, 9],
 ]);
 // console.log(result30);
+
+/************problem - 31 ****************
+ * 20. Valid Parentheses
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+ 
+
+Example 1:
+
+Input: s = "()"
+
+Output: true
+
+Example 2:
+
+Input: s = "()[]{}"
+
+Output: true
+ */
+
+// const isValidParentheses = (s) => {
+//   const parenthesesArr = ["()", "{}", "[]"];
+//   let validParentheses = false;
+//   for (let i = 0; i < s.length - 1; i++) {
+//     if (parenthesesArr.includes(s[i] + s[i + 1])) {
+//       validParentheses = true;
+//     } else {
+//       validParentheses = false;
+//     }
+//   }
+//   return validParentheses;
+// };
+const isValidParentheses = (s) => {
+  const parentheses = [];
+  const pair = {
+    ")": "(",
+    "}": "{",
+    "]": "[",
+  };
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] == "(" || s[i] == "{" || s[i] == "[") {
+      parentheses.push(s[i]);
+    } else {
+      const last = parentheses.pop();
+      if (pair[s[i]] !== last) {
+        return false;
+      }
+    }
+  }
+  return parentheses.length === 0;
+};
+const result31 = isValidParentheses("([])");
+// console.log(result31);
+
+/******************problem - 32 ****************
+ * 2011. Final Value of Variable After Performing Operations
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+There is a programming language with only four operations and one variable X:
+
+++X and X++ increments the value of the variable X by 1.
+--X and X-- decrements the value of the variable X by 1.
+Initially, the value of X is 0.
+
+Given an array of strings operations containing a list of operations, return the final value of X after performing all the operations.
+
+ 
+
+Example 1:
+
+Input: operations = ["--X","X++","X++"]
+Output: 1
+Explanation: The operations are performed as follows:
+Initially, X = 0.
+--X: X is decremented by 1, X =  0 - 1 = -1.
+X++: X is incremented by 1, X = -1 + 1 =  0.
+X++: X is incremented by 1, X =  0 + 1 =  1.
+ */
+
+const finalValueAfterOperations = (operations) => {
+  let x = 0;
+  for (let i = 0; i < operations.length; i++) {
+    const valueLowerCase = operations[i].toLowerCase();
+    if (valueLowerCase === "--x" || valueLowerCase === "x--") {
+      x -= 1;
+    }
+
+    if (valueLowerCase === "x++" || valueLowerCase === "++x") {
+      x += 1;
+    }
+  }
+  return x;
+};
+const result32 = finalValueAfterOperations(["--X", "X++", "X++"]);
+// console.log(result32);
+
+/*********problem - 33 ***************
+ * 1662. Check If Two String Arrays are Equivalent
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
+
+A string is represented by an array if the array elements concatenated in order forms the string.
+
+ 
+
+Example 1:
+
+Input: word1 = ["ab", "c"], word2 = ["a", "bc"]
+Output: true
+Explanation:
+word1 represents string "ab" + "c" -> "abc"
+word2 represents string "a" + "bc" -> "abc"
+The strings are the same, so return true.
+ */
+const arrayStringsAreEqual = (word1, word2) => {
+  // const alphabetObj = {
+  //   a: 0,
+  //   b: 1,
+  //   c: 2,
+  //   d: 3,
+  //   e: 4,
+  //   f: 5,
+  //   g: 6,
+  //   h: 7,
+  //   i: 8,
+  //   j: 9,
+  //   k: 10,
+  //   l: 11,
+  //   m: 12,
+  //   n: 13,
+  //   o: 14,
+  //   p: 15,
+  //   q: 16,
+  //   r: 17,
+  //   s: 18,
+  //   t: 19,
+  //   u: 20,
+  //   v: 21,
+  //   w: 22,
+  //   x: 23,
+  //   y: 24,
+  //   z: 25,
+  // };
+
+  const jointWord1 = word1.join("");
+  const jointWord2 = word2.join("");
+  if (jointWord1 !== jointWord2) {
+    return false;
+  } else {
+    return true;
+  }
+  // for (let i = 1; i < jointWord1.length; i++) {
+  //   if (alphabetObj[jointWord1[i - 1]] > alphabetObj[jointWord1[i]]) {
+  //     return (result = false);
+  //   }
+  // }
+  // for (let i = 1; i < jointWord2.length; i++) {
+  //   if (alphabetObj[jointWord2[i - 1]] > alphabetObj[jointWord2[i]]) {
+  //     return (result = false);
+  //   }
+  // }
+
+  // return result;
+};
+
+const result33 = arrayStringsAreEqual(["jrk", "qci"], ["jrkqci"]);
+// console.log(result33);
+
+/**************problem - 34 *****************
+ *
+ */
+/**************problem - 35 *****************
+ *2114. Maximum Number of Words Found in Sentences
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+A sentence is a list of words that are separated by a single space with no leading or trailing spaces.
+
+You are given an array of strings sentences, where each sentences[i] represents a single sentence.
+
+Return the maximum number of words that appear in a single sentence.
+
+ 
+
+Example 1:
+
+Input: sentences = ["alice and bob love leetcode", "i think so too", "this is great thanks very much"]
+Output: 6
+Explanation: 
+- The first sentence, "alice and bob love leetcode", has 5 words in total.
+- The second sentence, "i think so too", has 4 words in total.
+- The third sentence, "this is great thanks very much", has 6 words in total.
+Thus, the maximum number of words in a single sentence comes from the third sentence, which has 6 words.
+ */
+
+const mostWordsFound = (sentences) => {
+  let maximumNumberOfWords = 0;
+  for (let i = 0; i < sentences.length; i++) {
+    const sentenceLength = sentences[i].split(" ").length;
+
+    if (sentenceLength > maximumNumberOfWords) {
+      maximumNumberOfWords = sentenceLength;
+    }
+  }
+  return maximumNumberOfWords;
+};
+
+const result35 = mostWordsFound([
+  "alice and bob love leetcode",
+  "i think so too",
+  "this is great thanks very much",
+]);
+// console.log(result35);
+
+/*************problem - 36 *****************
+ * 1389. Create Target Array in the Given Order
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+Given two arrays of integers nums and index. Your task is to create target array under the following rules:
+
+Initially target array is empty.
+From left to right read nums[i] and index[i], insert at index index[i] the value nums[i] in target array.
+Repeat the previous step until there are no elements to read in nums and index.
+Return the target array.
+
+It is guaranteed that the insertion operations will be valid.
+
+ 
+
+Example 1:
+
+Input: nums = [0,1,2,3,4], index = [0,1,2,2,1]
+Output: [0,4,1,3,2]
+Explanation:
+nums       index     target
+0            0        [0]
+1            1        [0,1]
+2            2        [0,1,2]
+3            2        [0,1,3,2]
+4            1        [0,4,1,3,2]
+ */
+
+const createTargetArray = function (nums, index) {};
+
+const result36 = createTargetArray();
+// console.log(result36);
