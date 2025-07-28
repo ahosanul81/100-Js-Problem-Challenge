@@ -976,7 +976,82 @@ nums       index     target
 4            1        [0,4,1,3,2]
  */
 
-const createTargetArray = function (nums, index) {};
+const createTargetArray = function (nums, index) {
+  const targetArr = [];
+  for (let i = 0; i < nums.length; i++) {
+    targetArr.splice(index[i], 0, nums[i]);
+  }
+  return targetArr;
+};
 
-const result36 = createTargetArray();
+const result36 = createTargetArray([0, 1, 2, 3, 4], [0, 1, 2, 2, 1]);
 // console.log(result36);
+
+/************problem - 37 *****************
+ * 509. Fibonacci Number
+Easy
+Topics
+premium lock icon
+Companies
+The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+
+F(0) = 0, F(1) = 1
+F(n) = F(n - 1) + F(n - 2), for n > 1.
+Given n, calculate F(n).
+
+ 
+
+Example 1:
+
+Input: n = 2
+Output: 1
+Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+Example 2:
+
+Input: n = 3
+Output: 2
+Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
+ */
+const fib = function (n) {
+  if (n === 0 || n === 1) return n;
+  return fib(n - 1) + fib(n - 2);
+};
+const result37 = fib(3);
+// console.log(result37);
+
+/***********problem - 38 ****************
+ * 1221. Split a String in Balanced Strings
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+Balanced strings are those that have an equal quantity of 'L' and 'R' characters.
+
+Given a balanced string s, split it into some number of substrings such that:
+
+Each substring is balanced.
+Return the maximum number of balanced strings you can obtain.
+
+ 
+
+Example 1:
+
+Input: s = "RLRRLLRLRL"
+Output: 4
+Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
+ */
+
+const balancedStringSplit = function (s) {
+  let countL = 0;
+  let countR = 0;
+  let result = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "L") countL += 1;
+    else if (s[i] === "R") countR += 1;
+    if (countL === countR) result += 1;
+  }
+  return result;
+};
+const result38 = balancedStringSplit("RLRRLLRLRL");
+console.log(result38);
