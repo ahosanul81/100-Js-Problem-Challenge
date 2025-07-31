@@ -334,7 +334,7 @@ const twoSum = function (nums, target) {
 };
 
 const result12 = twoSum([2, 7, 11, 15], 9);
-console.log(result12);
+// console.log(result12);
 
 /************Problem- 13**********
  * You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
@@ -552,7 +552,7 @@ const result20Way2 = findMinMaxWay2([5, 1, 3, 4]);
  * 5 decimal to octal // 12
  */
 
-const numberSystemConvert = (number) => console.log(number.toString(2));
+const numberSystemConvert = (number) => number.toString(2);
 
 // numberSystemConvert(5);
 
@@ -1178,3 +1178,78 @@ const decompressRLElist = function (nums) {
 const result39 = decompressRLElist([1, 1, 3, 3]);
 
 // console.log(result39);
+
+/**************problem - 40 ********************
+ * 771. Jewels and Stones
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+You're given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels.
+
+Letters are case sensitive, so "a" is considered a different type of stone from "A".
+
+ 
+
+Example 1:
+
+Input: jewels = "aA", stones = "aAAbbbb"
+Output: 3
+ */
+
+const numJewelsInStones = function (jewels, stones) {
+  let count = 0;
+  for (let i = 0; i < jewels.length; i++) {
+    for (let j = 0; j < stones.length; j++) {
+      if (jewels[i] === stones[j]) {
+        count += 1;
+      }
+    }
+  }
+  return count;
+};
+
+const result40 = numJewelsInStones((jewels = "aA"), (stones = "aAAbbbb"));
+// console.log(result40);
+
+/**************problem - 41******************
+ * 217. Contains Duplicate
+Easy
+Topics
+premium lock icon
+Companies
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+
+Output: true
+
+Explanation:
+
+The element 1 occurs at the indices 0 and 3.
+ */
+
+// const  containsDuplicate = function (nums) {
+//   let count = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (nums[i] === nums[j]) {
+//         count += 1;
+//       }
+//     }
+//   }
+//   return count > 0;
+// };
+const containsDuplicate = function (nums) {
+  const arr = new Set([...nums]); // return object
+  // const arr2 = [...new Set(nums)]; return array
+
+  return arr.size !== nums.length;
+};
+const result41 = containsDuplicate([1, 2, 3, 1]);
+// console.log(result41);
