@@ -1295,4 +1295,203 @@ const numberOfMatches = function (n) {
 };
 
 const result42 = numberOfMatches(7);
-console.log(result42);
+// console.log(result42);
+
+/*************problem - 43 ************* 
+ * 1528. Shuffle String
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+You are given a string s and an integer array indices of the same length. The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
+
+Return the shuffled string.
+
+ 
+
+Example 1:
+
+
+Input: s = "codeleet", indices = [4,5,6,7,0,2,1,3]
+Output: "leetcode"
+Explanation: As shown, "codeleet" becomes "leetcode" after shuffling.
+*/
+
+const restoreString = function (s, indices) {
+  let res = [];
+  for (let i = 0; i < s.length; i++) {
+    const strPosition = indices[i];
+    res[strPosition] = s[i];
+  }
+  return res.join("");
+};
+
+const result43 = restoreString(
+  (s = "codeleet"),
+  (indices = [4, 5, 6, 7, 0, 2, 1, 3])
+);
+// console.log(result43);
+
+/*************problem - 44 *******************
+ * 2006. Count Number of Pairs With Absolute Difference K
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+Given an integer array nums and an integer k, return the number of pairs (i, j) where i < j such that |nums[i] - nums[j]| == k.
+
+The value of |x| is defined as:
+
+x if x >= 0.
+-x if x < 0.
+ 
+
+Example 1:
+
+Input: nums = [1,2,2,1], k = 1
+Output: 4
+Explanation: The pairs with an absolute difference of 1 are:
+- [1,2,2,1]
+- [1,2,2,1]
+- [1,2,2,1]
+- [1,2,2,1]
+ */
+var countKDifference = function (nums, k) {
+  let pair = 0;
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 0; j < nums.length; j++) {
+      if (nums[i] - nums[j] === k) {
+        pair += 1;
+      }
+    }
+  }
+  return pair;
+};
+const result44 = countKDifference((nums = [1, 2, 2, 1]), (k = 1));
+// console.log(result44);
+
+/**************problem - 45*******************
+ * 136. Single Number
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+Example 1:
+
+Input: nums = [2,2,1]
+
+Output: 1
+
+Example 2:
+
+Input: nums = [4,1,2,1,2]
+
+Output: 4
+ */
+// var singleNumber = function (nums) {
+//   for (let i = 0; i < nums.length; i++) {
+//     let foundDuplicate = false;
+//     for (let j = 0; j < nums.length; j++) {
+//       if (i !== j && nums[i] === nums[j]) {
+//         foundDuplicate = true;
+//         break;
+//       }
+//     }
+//     if (!foundDuplicate) {
+//       return nums[i];
+//     }
+//   }
+//   // return -1;
+// };
+// another way
+const singleNumber = function (nums) {
+  let singleOne;
+  for (let i = 0; i < nums.length; i++) {
+    singleOne = singleOne ^ nums[i];
+  }
+  return singleOne;
+};
+const result45 = singleNumber([4, 1, 2, 1, 2]);
+// console.log(result45);
+
+/***************problem - 46 ***********************
+ * 268. Missing Number
+Easy
+Topics
+premium lock icon
+Companies
+Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+
+ 
+
+Example 1:
+
+Input: nums = [3,0,1]
+
+Output: 2
+
+Explanation:
+
+n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
+ */
+
+const missingNumber = function (nums) {
+  const totalSeq = Array.from({ length: nums.length + 1 }, (_, i) => i);
+
+  for (let i = 0; i < totalSeq.length; i++) {
+    if (!nums.includes(totalSeq[i])) {
+      return totalSeq[i];
+    }
+  }
+};
+// another way
+// var missingNumber = function(nums) {
+//     for(let i = 0;i<=nums.length;i++){
+//         if(nums.includes(i)==false){
+//             return i;
+//         }
+//     }
+// };
+
+const result46 = missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]);
+// console.log(result46);
+
+/**************problem - 47 ******************
+ * 169. Majority Element
+Easy
+Topics
+premium lock icon
+Companies
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+ 
+
+Example 1:
+
+Input: nums = [3,2,3]
+Output: 3
+ */
+const majorityElement = function (nums) {
+  let multipleTimeNum = {};
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 0; j < nums.length; j++) {
+      if (i === j) continue;
+      if (nums[i] === nums[j]) {
+        multipleTimeNum.nums[i] += 1;
+      }
+    }
+  }
+  console.log(multipleTimeNum);
+};
+
+const result47 = majorityElement([2, 2, 1, 1, 1, 2, 2]);
+console.log(result47);
