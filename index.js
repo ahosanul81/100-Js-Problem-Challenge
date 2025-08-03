@@ -1481,17 +1481,31 @@ Input: nums = [3,2,3]
 Output: 3
  */
 const majorityElement = function (nums) {
+  let maximum = -Infinity;
+  let maxKey = null;
   let multipleTimeNum = {};
   for (let i = 0; i < nums.length; i++) {
+    if (multipleTimeNum[nums[i]]) continue;
     for (let j = 0; j < nums.length; j++) {
-      if (i === j) continue;
-      if (nums[i] === nums[j]) {
-        multipleTimeNum.nums[i] += 1;
+      if (nums.length > 1 && i === j) continue;
+      if (nums[i] === nums[j] && !multipleTimeNum[nums[i]]) {
+        multipleTimeNum[nums[i]] = 1;
+      }
+      if (nums[i] === nums[j] && multipleTimeNum[nums[i]]) {
+        multipleTimeNum[nums[i]] += 1;
       }
     }
   }
-  console.log(multipleTimeNum);
+  for (let key in multipleTimeNum) {
+    if (multipleTimeNum[key] > maximum) {
+      maximum = multipleTimeNum[key];
+      maxKey = key;
+    }
+  }
+  return Number(maxKey);
 };
 
-const result47 = majorityElement([2, 2, 1, 1, 1, 2, 2]);
-console.log(result47);
+const result47 = majorityElement([1, 3, 1, 1, 4, 1, 1, 5, 1, 1, 6, 2, 2]);
+// const result47 = majorityElement([1]);
+// const result47 = majorityElement([2, 2, 2, 2]);
+// console.log(result47);
