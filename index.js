@@ -693,8 +693,32 @@ const result27 = cloneArray([1, 1]);
 // console.log(result27);
 
 /************problem - 28 ******************
- *
+ * 58. Length of Last Word
+Easy
+Topics
+premium lock icon
+Companies
+Given a string s consisting of words and spaces, return the length of the last word in the string.
+
+A word is a maximal substring consisting of non-space characters only.
+
+ 
+
+Example 1:
+
+Input: s = "Hello World"
+Output: 5
+Explanation: The last word is "World" with length 5.
  */
+
+const lengthOfLastWord = function (s) {
+  const removeInitialAndEndingSpace = s.trim();
+  const strArr = removeInitialAndEndingSpace.split(" ");
+
+  return strArr[strArr.length - 1].length;
+};
+const result28 = lengthOfLastWord("   fly me   to   the moon  ");
+// console.log(result28);
 
 /************problem - 29 ******************
  * 1678. Goal Parser Interpretation
@@ -1607,4 +1631,8 @@ const removeDuplicates = function (nums) {
 };
 const result49 = removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]);
 // const result49 = removeDuplicates([1, 1, 2]);
-console.log(result49);
+// console.log(result49);
+
+/**************problem - 50 **************************
+ *
+ */
