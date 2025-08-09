@@ -1683,4 +1683,26 @@ var removeElement = function (nums, val) {
   return k;
 };
 const result50 = removeElement((nums = [0, 1, 2, 2, 3, 0, 4, 2]), (val = 2));
-console.log(result50);
+// console.log(result50);
+
+/*****************problem - 51************************
+ * 35. Search Insert Position
+Easy
+Topics
+premium lock icon
+Companies
+Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+ 
+
+Example 1:
+
+Input: nums = [1,3,5,6], target = 5
+Output: 2
+ */
+
+const searchInsert = function (nums, target) {};
+const result51 = searchInsert();
+console.log(result51);
