@@ -1744,3 +1744,93 @@ var searchInsert2 = function (nums, target) {
 // };
 // const result51 = searchInsert((nums = [1, 3, 5, 6]), (target = 2));
 //  searchInsert2(([1001], 5));
+
+/***************problem - 52 *****************
+ * 28. Find the Index of the First Occurrence in a String
+Easy
+Topics
+premium lock icon
+Companies
+Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+ 
+
+Example 1:
+
+Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+Explanation: "sad" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+ */
+const strStr = function (haystack, needle) {
+  let str = "";
+  for (let i = 0; i < haystack.length; i++) {
+    str += haystack[i];
+    if (haystack.substring(i, i + needle.length) === needle) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+//another way
+// var strStr = function(haystack, needle) {
+//     const result = haystack.indexOf(needle)
+//     return result
+// };
+
+// const result52 = strStr((haystack = "sadbutsad"), (needle = "sad"));
+const result52 = strStr((haystack = "hello"), (needle = "ll"));
+// console.log(result52);
+
+/****************problem - 53 *****************
+ * 66. Plus One
+Easy
+Topics
+premium lock icon
+Companies
+You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+
+Increment the large integer by one and return the resulting array of digits.
+
+ 
+
+Example 1:
+
+Input: digits = [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.
+Incrementing by one gives 123 + 1 = 124.
+Thus, the result should be [1,2,4].
+ */
+
+const plusOne = function (digits) {
+  let carry = 1;
+  for (let i = digits.length - 1; i >= 0; i--) {
+    let sum = digits[i] + carry;
+    digits[i] = sum % 10;
+    carry = Math.floor(sum / 10);
+    if (carry === 0) break;
+  }
+  if (carry > 0) {
+    digits.unshift(carry);
+  }
+  return digits;
+};
+
+// another way
+const plusOneAnotherWay = function (digits) {
+  // console.log(BigInt(1234) + 2n);
+
+  let num = BigInt(digits.join("")) + 1n;
+  return num.toString().split("").map(Number);
+};
+
+// const result53 = plusOne((digits = [1, 2, 3]));
+// const result53 = plusOne([
+//   6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3,
+// ]);
+const result53 = plusOneAnotherWay([
+  6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3,
+]);
+console.log(result53);
