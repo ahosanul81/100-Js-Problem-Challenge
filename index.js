@@ -1833,4 +1833,60 @@ const plusOneAnotherWay = function (digits) {
 const result53 = plusOneAnotherWay([
   6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3,
 ]);
-console.log(result53);
+// console.log(result53);
+
+/*******************problem - 54 ************************
+ * 67. Add Binary
+Easy
+Topics
+premium lock icon
+Companies
+Given two binary strings a and b, return their sum as a binary string.
+
+ 
+
+Example 1:
+
+Input: a = "11", b = "1"
+Output: "100"
+Example 2:
+
+Input: a = "1010", b = "1011"
+Output: "10101"
+ 
+ */
+
+const addBinary = function (a, b) {
+  // console.log(parseInt(a, 16));
+
+  return (BigInt(`0b${a}`) + BigInt(`0b${b}`)).toString(2);
+};
+const result54 = addBinary((a = "1010"), (b = "1011"));
+// console.log(result54);
+
+/***************problem - 55 **********************
+ * 69. Sqrt(x)
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+
+You must not use any built-in exponent function or operator.
+
+For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.
+ 
+
+Example 1:
+
+Input: x = 4
+Output: 2
+Explanation: The square root of 4 is 2, so we return 2.
+ */
+
+const mySqrt = function (x) {
+  return Math.floor(Math.sqrt(x));
+};
+const result55 = mySqrt(8);
+console.log(result55);
