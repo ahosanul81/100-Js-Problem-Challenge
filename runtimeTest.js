@@ -1,30 +1,16 @@
-function isAlphaNum(c) {
-  return (
-    (c >= "a" && c <= "z") || (c >= "A" && c <= "Z") || (c >= "0" && c <= "9")
-  );
-}
-var isPalindromeString = function (s) {
-  let fr = 0;
-  let bc = s.length - 1;
+let climbStairs = function (n) {
+  const dp = new Array(n + 1).fill(0); // step 1
+  dp[0] = 1; // step 2
 
-  while (fr < bc) {
-    while (fr < bc && !isAlphaNum(s[fr])) {
-      fr++;
-    }
-    while (fr < bc && !isAlphaNum(s[bc])) {
-      bc--;
-    }
-
-    if (s[fr].toLowerCase() !== s[bc].toLowerCase()) {
-      return false;
-    }
-    fr++;
-    bc--;
+  for (let i = 1; i <= n; i++) {
+    // step 3
+    if (i - 1 >= 0) dp[i] += dp[i - 1];
+    if (i - 2 >= 0) dp[i] += dp[i - 2];
+    console.log(dp);
   }
 
-  return true;
+  return dp[n]; // step 4
 };
 
-const result57 = isPalindromeString("A man, a plan, a canal: Panama");
-// const result57 = isPalindromeString("abc"); true
-console.log(result57);
+const result58 = climbStairs(4);
+console.log(result58);
