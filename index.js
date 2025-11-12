@@ -1,4 +1,4 @@
-// gap -   28, 34
+// gap -    34
 /** ************Problem- 1***********************
  *Write a function that returns the sum of two numbers.
  *Write a function that returns the sum of all numbers regardless of # of params.
@@ -2094,4 +2094,4 @@ const result60 = merge(
   (nums2 = [2, 5, 6]),
   (n = 3)
 );
-console.log(result60);
+// console.log(result60);

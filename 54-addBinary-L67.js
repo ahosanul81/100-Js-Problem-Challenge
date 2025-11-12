@@ -1,0 +1,28 @@
+/*******************problem - 54 ************************
+ * 67. Add Binary
+Easy
+Topics
+premium lock icon
+Companies
+Given two binary strings a and b, return their sum as a binary string.
+
+ 
+
+Example 1:
+
+Input: a = "11", b = "1"
+Output: "100"
+Example 2:
+
+Input: a = "1010", b = "1011"
+Output: "10101"
+ 
+ */
+
+const addBinary = function (a, b) {
+  // console.log(parseInt(a, 16));
+
+  return (BigInt(`0b${a}`) + BigInt(`0b${b}`)).toString(2);
+};
+const result54 = addBinary((a = "1010"), (b = "1011"));
+// console.log(result54);
